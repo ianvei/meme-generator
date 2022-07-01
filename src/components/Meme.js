@@ -1,13 +1,19 @@
 import React, { Component } from "react";
 import memesData from '../memesData.js'
+import nicImg from '../images/nic.png'
 
 export default class Meme extends Component {
     constructor(){
         super()
 
         this.state = {
+            topText: '',
+            bottomText: '',
             url: '',
+            allMemeImages: [],
         }
+
+        this.setMemeUrl = this.setMemeUrl.bind(this)
     }
 
     setMemeUrl = () => {
@@ -18,8 +24,6 @@ export default class Meme extends Component {
             url: memeItem.url
         });
     }
-
-    
 
     render(){
         const { url } = this.state;
@@ -43,7 +47,11 @@ export default class Meme extends Component {
                         Get a new meme image 🖼
                     </button>
                 </div>
-                <img src={url} alt="" />
+                <div className="img-cont">
+                    <img src={url} alt="" className="meme--image"/>
+                    <img src={nicImg} alt="" className="nic--image"/>     
+                </div>
+                
             </main>
         )
     }
